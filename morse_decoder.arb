@@ -1,0 +1,65 @@
+MORSE_CODE = {
+  a: '.-',
+  b: '-...',
+  c: '-.-.',
+  d: '-..',
+  e: '.',
+  f: '..-.',
+  g: '--.',
+  h: '....',
+  i: '..',
+  j: '.---',
+  k: '-.-',
+  l: '.-..',
+  m: '--',
+  n: '-.',
+  o: '---',
+  p: '.--.',
+  q: '--.-',
+  r: '.-.',
+  s: '...',
+  t: '-',
+  u: '..-',
+  v: '...-',
+  w: '.--',
+  x: '-..-',
+  y: '-.--',
+  z: '--..',
+  1 => '.----',
+  2 => '..---',
+  3 => '...--',
+  4 => '....-',
+  5 => '.....',
+  6 => '-....',
+  7 => '--...',
+  8 => '---..',
+  9 => '----.',
+  0 => '-----'
+}.freeze
+
+def decode_char(morse_char)
+  MORSE_CODE.each do |key, value|
+    return key.to_s if morse_char == value
+  end
+end
+
+def decode_word(morse_word)
+  arr_of_characters = morse_word.split
+  result = []
+  arr_of_characters.each do |character|
+    result.push(decode_char(character))
+  end
+  "#{result.join.upcase} "
+end
+
+def decode(morse_sentence)
+  arr_of_words = morse_sentence.split('   ')
+  result = []
+  arr_of_words.each do |word|
+    result.push(decode_word(word))
+  end
+  result.join
+end
+puts decode_word('-- -.--')
+puts decode('-- -.--   -. .- -- .')
+puts decode('      .-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
