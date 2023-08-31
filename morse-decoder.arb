@@ -45,3 +45,12 @@ def decode_char(morse_char)
     }
 end
 
+def decode_word(morse_word)
+    arr_of_characters = morse_word.split(" ")
+    result = []
+    arr_of_characters.each { |character| 
+         result.push(decode_char(character))
+    }
+    result = result.join("").upcase+" "
+    return result
+end
