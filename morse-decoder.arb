@@ -36,3 +36,12 @@ MORSE_CODE = {
     9=>'----.',
     0=>'-----',
 }
+
+def decode_char(morse_char)
+    MORSE_CODE.each { |key, value| 
+        if morse_char == value
+            return "#{key}"
+        end
+    }
+end
+
