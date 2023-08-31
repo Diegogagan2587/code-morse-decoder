@@ -54,3 +54,16 @@ def decode_word(morse_word)
     result = result.join("").upcase+" "
     return result
 end
+
+def decode(morse_sentence)
+    arr_of_words = morse_sentence.split("   ")
+    result = []
+    arr_of_words.each {|word|
+        result.push( decode_word(word) )
+    }
+    result = result.join("")
+    return result
+end
+puts decode_word("-- -.--");
+puts   decode("-- -.--   -. .- -- .")
+puts decode("      .-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
